@@ -1,28 +1,40 @@
 import DayList from "./DayList";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import "components/Application.scss";
-
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
+import Appointment from "components/Appointment";
+import axios from "axios";
+import { getAppointmentsForDay } from "../helpers/selectors";
 
 export default function Application(props) {
-  const [day, setDay] = useState("Monday");
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: {},
+  });
+
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+
+  const apptList = dailyAppointments.map((appointment) => {
+    return <Appointment key={appointment.id} {...appointment} />;
+  });
+
+  const setDay = (day) => setState((prev) => ({ ...prev, day }));
+
+  useEffect(() => {
+    const dayPromise = axios.get("/api/days");
+    const appointmentPromise = axios.get("/api/appointments");
+
+    const promises = [dayPromise, appointmentPromise];
+
+    Promise.all(promises).then((all) => {
+      setState((prev) => ({
+        ...prev,
+        days: all[0].data,
+        appointments: all[1].data,
+      }));
+    });
+  }, []);
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -33,7 +45,7 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={days} value={day} onChange={setDay} />
+          <DayList days={state.days} value={state.day} onChange={setDay} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
@@ -42,7 +54,8 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {apptList}
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
