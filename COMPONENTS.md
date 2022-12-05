@@ -41,8 +41,8 @@ Used by:
 
 Appointment
 State:
-Props: id: number, name: string, avatar: url, selected:boolean
-Used by:
+Props: id: number, name: string, avatar: url, selected:boolean, interviewers, interview
+Used by: form
 
 Appointment/Header
 State:
@@ -61,7 +61,7 @@ Used by:
 
 Appointment/Form
 State:
-Props:
+Props:interviewers, interview
 Used by:
 
 Appointment/Status
