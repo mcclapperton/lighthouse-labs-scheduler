@@ -32,6 +32,22 @@ export default function Application(props) {
       [id]: appointment,
     };
     setState({ ...state, appointments });
+    // update db with interview data
+    axios.put(`/api/appointments/${id}`, appointment);
+    setState({ ...state, appointments });
+  };
+
+  const cancelInterview = (id) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    axios.delete(`/api/appointments/${id}`);
+    setState({ ...state, appointments });
   };
 
   const schedule = appointments.map((appointment) => {
@@ -44,6 +60,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });

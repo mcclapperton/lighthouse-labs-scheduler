@@ -56,7 +56,7 @@ Used by: Appointment
 
 Appointment/Show
 State: NO STATE
-Props: student, interviewer
+Props: student, interviewer, onDelete, onEdit
 Used by: Appointment
 
 Appointment/Form
@@ -66,8 +66,8 @@ Used by: Appointment
 
 Appointment/Status
 State:
-Props:
-Used by:
+Props: message
+Used by: Appointment
 
 Appointment/Error
 State:
@@ -76,5 +76,5 @@ Used by:
 
 Appointment/Confirm
 State:
-Props:
-Used by:
+Props: onCancel, onConfirm
+Used by: Appointment
