@@ -46,7 +46,7 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch((error) => transition(ERROR_DELETE, true));
   }
-  console.log(props.interview);
+  // console.log(props.interview);
   return (
     <article className="appointment">
       <Header time={props.time} />
