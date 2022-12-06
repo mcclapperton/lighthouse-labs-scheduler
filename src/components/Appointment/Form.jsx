@@ -31,13 +31,11 @@ export default function Form(props) {
         interviewers={props.interviewers}
         value={interviewer}
         onChange={setInterviewer}
-
       />
     </section>
     <section className="appointment__card-right">
       <section className="appointment__actions">
         <Button danger onClick={cancel}>Cancel</Button>
-        {/* is this name or student below???? */}
         <Button confirm onClick={() => props.onSave(student, interviewer)}>Save</Button>
       </section>
     </section>

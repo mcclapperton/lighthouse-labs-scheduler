@@ -31,10 +31,11 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment,
     };
-    setState({ ...state, appointments });
+
     // update db with interview data
-    axios.put(`/api/appointments/${id}`, appointment);
-    setState({ ...state, appointments });
+    return axios
+      .put(`/api/appointments/${id}`, appointment)
+      .then(() => setState({ ...state, appointments }));
   };
 
   const cancelInterview = (id) => {
@@ -46,8 +47,10 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment,
     };
-    axios.delete(`/api/appointments/${id}`);
-    setState({ ...state, appointments });
+
+    return axios
+      .delete(`/api/appointments/${id}`)
+      .then(() => setState({ ...state, appointments }));
   };
 
   const schedule = appointments.map((appointment) => {
@@ -72,14 +75,16 @@ export default function Application(props) {
 
     const promises = [dayPromise, appointmentPromise, interviewersPromise];
 
-    Promise.all(promises).then((all) => {
-      setState((prev) => ({
-        ...prev,
-        days: all[0].data,
-        appointments: all[1].data,
-        interviewers: all[2].data,
-      }));
-    });
+    Promise.all(promises)
+      .then((all) => {
+        setState((prev) => ({
+          ...prev,
+          days: all[0].data,
+          appointments: all[1].data,
+          interviewers: all[2].data,
+        }));
+      })
+      .catch();
   }, []);
 
   return (

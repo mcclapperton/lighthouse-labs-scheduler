@@ -71,8 +71,8 @@ Used by: Appointment
 
 Appointment/Error
 State:
-Props:
-Used by:
+Props: onClose, message
+Used by: Appointment
 
 Appointment/Confirm
 State:
