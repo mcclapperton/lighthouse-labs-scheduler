@@ -27,8 +27,8 @@ export function getInterview(state, interview) {
   return { ...interview, interviewer };
 }
 
-
 export function getInterviewersForDay(state, day) {
+  // console.log("stat.days:", state.days);
   const filteredDays = state.days.filter((weekDay) => {
     // returns arr when day names matching
     return weekDay.name === day;
@@ -38,10 +38,10 @@ export function getInterviewersForDay(state, day) {
     return [];
   }
   // returns appt obj at the appoinment id
-  const findAppts = filteredDays[0].appointments.map((appt) => {
-    // console.log(`filtered:`, filteredDays[0].appointments);
+  const findInterviewers = filteredDays[0].interviewers.map((appt) => {
+    // console.log(`filtered:`, filteredDays[0].interviewers);
     // console.log(state.appointments[appt]);
-    return state.appointments[appt];
+    return state.interviewers[appt];
   });
-  return findAppts;
+  return findInterviewers;
 }

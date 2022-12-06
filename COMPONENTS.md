@@ -13,56 +13,56 @@ Appointment/Form
 Appointment/Status
 Appointment/Error
 Appointment/Confirm
-Button
 
+Button
 State: NO STATE
 Props: confirm (boolean), disabled (boolean), danger, boolean, onClick (function), clickable
 Used by: EVERYONE
 
 DayList
-State:
-Props:
-Used by:
+State: day, days, appointments, interviewers
+Props: days, value, onChange
+Used by: App
 
 DayListItem
-State:
-Props:
-Used by:
+State: NO STATE
+Props: key, selected, spots, name, setDay
+Used by: dayList
 
 InterviewerList
-State:
-Props:
-Used by:
+State: NO STATE
+Props: interviewers
+Used by: App ???
 
 InterviewerListItem
-State:
-Props:
-Used by:
+State: NO STATE
+Props: key, name, avatar, selected , setInterviewer
+Used by: interviewerList
 
 Appointment
-State:
-Props: id: number, name: string, avatar: url, selected:boolean, interviewers, interview
-Used by: form
+State: day, days, appointments, interviewers
+Props: key, id, time, interview, interviewers, bookInterview
+Used by: App
 
 Appointment/Header
-State:
-Props:
-Used by:
+State: NO STATE
+Props: time
+Used by: Appointment
 
 Appointment/Empty
-State:
-Props:
-Used by:
+State: NO STATE
+Props: onAdd
+Used by: Appointment
 
 Appointment/Show
-State:
-Props:
-Used by:
+State: NO STATE
+Props: student, interviewer
+Used by: Appointment
 
 Appointment/Form
-State:
-Props:interviewers, interview
-Used by:
+State: student, interviewer
+Props: onSave, interviewers, onCancel
+Used by: Appointment
 
 Appointment/Status
 State:
