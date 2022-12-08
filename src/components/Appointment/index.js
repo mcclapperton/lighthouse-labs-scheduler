@@ -31,13 +31,13 @@ export default function Appointment(props) {
     };
 
     transition(SAVING);
-    // console.log("props:", props);
+
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch((error) => transition(ERROR_SAVE, true));
   }
-  
+
   function deleteInterview() {
     transition(DELETING, true);
     props
@@ -45,7 +45,7 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch((error) => transition(ERROR_DELETE, true));
   }
- 
+
   return (
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />

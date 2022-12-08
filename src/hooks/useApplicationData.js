@@ -30,9 +30,8 @@ export function useApplicationData() {
     allDays[indexOfCurrentDay].spots = spots;
     return allDays;
   };
-// refactor update spots??
-  const bookInterview = (id, interview) => {
 
+  const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -89,7 +88,6 @@ export function useApplicationData() {
       })
       .catch();
   }, []);
-  // console.log(state);
 
   return { setDay, state, bookInterview, cancelInterview, updateSpots };
 }

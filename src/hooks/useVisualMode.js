@@ -19,8 +19,6 @@ export default function useVisualMode(initial) {
   }
   // allows to go to prev mode
   function back() {
-    // console.log("history:", history);
-
     setHistory((prev) => {
       const newHistory = prev.slice(0, prev.length - 1);
       return newHistory;
@@ -28,4 +26,3 @@ export default function useVisualMode(initial) {
   }
   return { mode: history[history.length - 1], transition, back };
 }
-// could refactor setHistory in transition
