@@ -11,9 +11,6 @@ export function useApplicationData() {
     interviewers: {},
   });
 
-  console.log("state days!:", state.days);
-  console.log("state !:", state);
-
   const updateSpots = (state, appointments) => {
     const allDays = [...state.days];
     // find current day obj
@@ -29,12 +26,13 @@ export function useApplicationData() {
     );
     // amount of free spots is length of freeApptsForDay (amount of nulls)
     const spots = freeApptsForDay.length;
-
+    // update spots with new val!
     allDays[indexOfCurrentDay].spots = spots;
     return allDays;
   };
-
+// refactor update spots??
   const bookInterview = (id, interview) => {
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },

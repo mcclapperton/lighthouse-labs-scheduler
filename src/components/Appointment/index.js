@@ -37,8 +37,7 @@ export default function Appointment(props) {
       .then(() => transition(SHOW))
       .catch((error) => transition(ERROR_SAVE, true));
   }
-
-  // console.log("inter:", props.interview);
+  
   function deleteInterview() {
     transition(DELETING, true);
     props
@@ -46,15 +45,15 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch((error) => transition(ERROR_DELETE, true));
   }
-  // console.log(props.interview);
+ 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
         <Show
           student={props.interview.student}
-          interviewer={props.interview.interviewer.name}
+          interviewer={props.interview.interviewer?.name}
           onDelete={() => transition(CONFIRM)}
           onEdit={() => transition(EDIT)}
         />
