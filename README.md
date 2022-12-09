@@ -21,3 +21,11 @@ npm test
 ```sh
 npm run storybook
 ```
+
+##Screenshots:
+
+![Main Monday Page](docs/monday-main-page.png)
+
+![Edit page](docs/edit-page.png)
+
+![Delete confirmation](docs/delete-page.png)
