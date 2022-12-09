@@ -22,7 +22,7 @@ npm test
 npm run storybook
 ```
 
-##Screenshots:
+## Screenshots:
 
 ![Main Monday Page](docs/monday-main-page.png)
 
